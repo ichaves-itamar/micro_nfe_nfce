@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\NFeController;
+
+
+use App\Http\Controllers\Nfe\NFeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('teste', [NFeController::class,'index'])->name('teste');
+Route::group(['prefix'=> 'nfe'], function () {
+Route::post('transmitir', [NFeController::class, 'transmitir']);
+});

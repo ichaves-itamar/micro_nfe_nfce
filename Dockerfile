@@ -23,6 +23,7 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
 RUN docker-php-ext-install soap
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install bcmath
+RUN docker-php-ext-install intl
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
