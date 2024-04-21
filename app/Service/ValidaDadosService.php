@@ -29,7 +29,6 @@ public static function valida($dados)
 
         }
 
-
         //NODE ide
         $ide = self::validaIde($dados["ide"]);
         $notafiscal->ide = $ide;
