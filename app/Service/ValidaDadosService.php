@@ -41,6 +41,11 @@ public static function valida($dados)
         $destinatario = self::validaDestinatario($dados["destinatario"]);
         $notafiscal->destinatario = $destinatario;
 
+        //Node InfRespTecnico
+        $destinatario = self::validaInfRespTecnico($dados["destinatario"]);
+        $notafiscal->destinatario = $destinatario;
+
+
         $retorno->tem_erro = false;
         $retorno->tem_erro = "";
         $retorno->notafiscal = $notafiscal;
@@ -55,9 +60,11 @@ public static function valida($dados)
     return $retorno;
 }
 
-public static function validaIde($array)
+public static function validaIde($array, $emitente, $destinatario)
 {
 $dados = (object) $array;
+$emitente = (object) $emitente;
+$destinatario = (object) $destinatario;
 
 if (!isset($dados->nNF) || blank($dados->nNF) || is_null($dados->nNF)) {
     throw new \Exception("o campo nNF do node IDE é obrigatorio node IDE");
@@ -114,8 +121,21 @@ if (!isset($dados->vTroco) || blank($dados->vTroco) || is_null($dados->vTroco)) 
     throw new \Exception("o campo vTroco do node IDE é obrigatorio node IDE");
 }
 
+if($emitente->UF !="EX"){
+    if($emitente->UF == $destinatario->UF){
+        $dados->idDest = config("constanteNota.idDest.INTERNA");
+    }else{
+        $dados->idDest = config("constanteNota.idDest.INTERESTADUAL");
+    }
+}else{
+    $dados->idDest = config("constanteNota.idDest.EXTERIOR");
+}
 
-return $dados;
+$ide = new Ide();
+$ide->setarDados($dados);
+return $ide;
+
+
 }
 
 public static function validaEmitente($array)
@@ -206,7 +226,27 @@ if (!isset($dados->CPF_CNPJ) || blank($dados->CPF_CNPJ) || is_null($dados->CPF_C
 if (!isset($dados->CPF_CNPJ) || blank($dados->CPF_CNPJ) || is_null($dados->CPF_CNPJ)) {
     throw new \Exception("o campo nNF do node CPF_CNPJ é obrigatorio no node Destinatario");
 }
+
+$cnpj  = tira_mascara($dados->CPF_CNPJ);
+        if(strlen($cnpj) == 14){
+            $dados->CNPJ = $cnpj;
+            $dados->CPF  = null;
+
+        }else{
+           $dados->CPF = $cnpj;
+            $dados->CNPJ  = null;
+        }
+
+      return $dados;
 }
 
+public static function validaInfRespTecnico($array)
+{
+$dados = (object) $array;
+
+if (!isset($dados->CNPJ) || blank($dados->CNPJ) || is_null($dados->CNPJ)) {
+    throw new \Exception("o campo nNF do node CNPJ é obrigatorio node IDE");
+}
+}
 
 }
