@@ -1,9 +1,7 @@
 <?php
 
 
-
 use App\Http\Controllers\Nfe\NFeController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
+/**
+ * Routes NF-e
+ */
 Route::group(['prefix'=> 'nfe'], function () {
 Route::post('transmitir', [NFeController::class, 'transmitir']);
 });
+
+
+/**
+ * Routes NFC-e
+ */
+
+ 
