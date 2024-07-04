@@ -18,12 +18,12 @@ class Transportadora extends Model
 
 
     public function setarDados( $data){
-        $this->xNome       = $data->xNome ?? null;
-        $this->IE          = $data->IE ?? null;
-        $this->xEnder      = $data->xEnder ?? null;
-        $this->xMun        = $data->xMun ?? null;
-        $this->UF          = $data->UF ?? null;
-        $this->CNPJ        = $data->CNPJ ?? null;
+        $this->xNome       = $data['xNome '] ?? null;
+        $this->IE          = $data['IE '] ?? null;
+        $this->xEnder      = $data['xEnder '] ?? null;
+        $this->xMun        = $data['xMun '] ?? null;
+        $this->UF          = $data['UF '] ?? null;
+        $this->CNPJ        = $data['CNPJ '] ?? null;
     }
 
     public static function montarXml($nfe, $dados){

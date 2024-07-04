@@ -14,9 +14,9 @@ class Pagamento extends Model
     public $indPag;
 
     public function setarDados( $data){
-        $this->tPag      = $data->tPag ?? null;
-        $this->vPag      = $data->vPag ?? null;
-        $this->indPag    = $data->indPag ?? null;
+        $this->tPag      = $data['tPag '] ?? null;
+        $this->vPag      = $data['vPag '] ?? null;
+        $this->indPag    = $data['indPag '] ?? null;
     }
 
     public static function montarXml($nfe, $dadosPagamento, $dadosCartao){

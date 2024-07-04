@@ -17,9 +17,9 @@ class Duplicata extends Model
 
 
     public function setarDados( $data){
-        $this->nDup         = $data->nDup ?? null;
-        $this->dVenc        = $data->dVenc ?? null;
-        $this->vDup         = $data->vDup ?? null;
+        $this->nDup         = $data['nDup '] ?? null;
+        $this->dVenc        = $data['dVenc '] ?? null;
+        $this->vDup         = $data['vDup '] ?? null;
     }
 
     public static function montarXml($nfe, $dados){

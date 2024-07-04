@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ide extends Model
+class IdeNfe extends Model
 {
     use HasFactory;
 
@@ -35,29 +35,29 @@ class Ide extends Model
     public $modFrete;
 
     public function setarDados( $data){
-        $this->cUF      = $data->cUF ?? null;
-        $this->nNF      = $data->nNF ?? null;
-        $this->cNF      = $data->cNF ?? null;
-        $this->natOp    = $data->natOp ?? null;
-        $this->indPag   = $data->indPag ?? null;
-        $this->mod      = $data->mod ?? null;
-        $this->serie    = $data->serie ?? null;
-        $this->dhEmi    = $data->dhEmi ?? null;
-        $this->dhSaiEnt = $data->dhSaiEnt ?? null;
-        $this->tpNF     = $data->tpNF ?? null;
-        $this->idDest   = $data->idDest ?? null;
-        $this->cMunFG   = $data->cMunFG ?? null;
-        $this->tpImp    = $data->tpImp ?? null;
-        $this->tpEmis   = $data->tpEmis ?? null;
-        $this->tpAmb    = $data->tpAmb ?? null;
-        $this->finNFe   = $data->finNFe ?? null;
-        $this->indFinal = $data->indFinal ?? null;
-        $this->indPres  = $data->indPres ?? null;
-        $this->procEmi  = $data->procEmi ?? null;
-        $this->verProc  = $data->verProc ?? null;
-        $this->dhCont   = $data->dhCont ?? null;
-        $this->xJust    = $data->xJust ?? null;
-        $this->modFrete = $data->modFrete ?? "9";
+        $this->cUF      = $data['cUF '] ?? null;
+        $this->nNF      = $data['nNF '] ?? null;
+        $this->cNF      = $data['cNF '] ?? null;
+        $this->natOp    = $data['natOp '] ?? null;
+        $this->indPag   = $data['indPag '] ?? null;
+        $this->mod      = $data['mod '] ?? null;
+        $this->serie    = $data['serie '] ?? null;
+        $this->dhEmi    = $data['dhEmi '] ?? null;
+        $this->dhSaiEnt = $data['dhSaiEnt '] ?? null;
+        $this->tpNF     = $data['tpNF '] ?? null;
+        $this->idDest   = $data['idDest '] ?? null;
+        $this->cMunFG   = $data['cMunFG '] ?? null;
+        $this->tpImp    = $data['tpImp '] ?? null;
+        $this->tpEmis   = $data['tpEmis '] ?? null;
+        $this->tpAmb    = $data['tpAmb '] ?? null;
+        $this->finNFe   = $data['finNFe '] ?? null;
+        $this->indFinal = $data['indFinal '] ?? null;
+        $this->indPres  = $data['indPres '] ?? null;
+        $this->procEmi  = $data['procEmi '] ?? null;
+        $this->verProc  = $data['verProc '] ?? null;
+        $this->dhCont   = $data['dhCont '] ?? null;
+        $this->xJust    = $data['xJust '] ?? null;
+        $this->modFrete = $data['modFrete '] ?? "9";
     }
 
     public static function montarXml($nfe, $dados){

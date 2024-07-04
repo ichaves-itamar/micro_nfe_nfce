@@ -35,31 +35,31 @@ class Produto extends Model
     public $vOutro;
     public $indTot;
 
-    public function setarDados( $data){
-        $this->cProd        = $data->cProd ?? null;
-        $this->cEAN         = $data->cEAN ?? null;
-        $this->xProd        = $data->xProd ?? null;
-        $this->NCM          = $data->NCM ?? null;
-        $this->NVE          = $data->NVE ?? null;
-        $this->CEST         = $data->CEST ?? null;
-        $this->indEscala    = $data->indEscala ?? null;
-        $this->CNPJFab      = $data->CNPJFab ?? null;
-        $this->cBenef       = $data->cBenef ?? null;
-        $this->EXTIPI       = $data->EXTIPI ?? null;
-        $this->CFOP         = $data->CFOP ?? null;
-        $this->uCom         = $data->uCom ?? null;
-        $this->vUnCom       = $data->vUnCom ?? null;
-        $this->qCom         = $data->qCom ?? null;
-        $this->vProd        = $data->vProd ?? null;
-        $this->cEANTrib     = $data->cEANTrib ?? null;
-        $this->uTrib        = $data->uTrib ?? null;
-        $this->qTrib        = $data->qTrib ?? null;
-        $this->vUnTrib      = $data->vUnTrib ?? null;
-        $this->vFrete       = $data->vFrete ?? null;
-        $this->vSeg         = $data->vSeg ?? null;
-        $this->vDesc        = $data->vDesc ?? null;
-        $this->vOutro       = $data->vOutro ?? null;
-        $this->indTot       = $data->indTot ?? null;
+    public function setarDados(array $data){
+        $this->cProd        = $data['cProd '] ?? null;
+        $this->cEAN         = $data['cEAN '] ?? null;
+        $this->xProd        = $data['xProd '] ?? null;
+        $this->NCM          = $data['NCM '] ?? null;
+        $this->NVE          = $data['NVE '] ?? null;
+        $this->CEST         = $data['CEST '] ?? null;
+        $this->indEscala    = $data['indEscala '] ?? null;
+        $this->CNPJFab      = $data['CNPJFab '] ?? null;
+        $this->cBenef       = $data['cBenef '] ?? null;
+        $this->EXTIPI       = $data['EXTIPI '] ?? null;
+        $this->CFOP         = $data['CFOP '] ?? null;
+        $this->uCom         = $data['uCom '] ?? null;
+        $this->vUnCom       = $data['vUnCom '] ?? null;
+        $this->qCom         = $data['qCom '] ?? null;
+        $this->vProd        = $data['vProd '] ?? null;
+        $this->cEANTrib     = $data['cEANTrib '] ?? null;
+        $this->uTrib        = $data['uTrib '] ?? null;
+        $this->qTrib        = $data['qTrib '] ?? null;
+        $this->vUnTrib      = $data['vUnTrib '] ?? null;
+        $this->vFrete       = $data['vFrete '] ?? null;
+        $this->vSeg         = $data['vSeg '] ?? null;
+        $this->vDesc        = $data['vDesc '] ?? null;
+        $this->vOutro       = $data['vOutro '] ?? null;
+        $this->indTot       = $data['indTot '] ?? null;
 
     }
 

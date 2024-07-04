@@ -18,11 +18,11 @@ class Reboque extends Model
 
 
     public function setarDados( $data){
-        $this->placa        = $data->placa ?? null;
-        $this->UF           = $data->UF ?? null;
-        $this->RNTC         = $data->RNTC ?? null;
-        $this->vagao        = $data->vagao ?? null;
-        $this->balsa        = $data->balsa ?? null;
+        $this->placa        = $data['placa '] ?? null;
+        $this->UF           = $data['UF '] ?? null;
+        $this->RNTC         = $data['RNTC '] ?? null;
+        $this->vagao        = $data['vagao '] ?? null;
+        $this->balsa        = $data['balsa '] ?? null;
     }
 
     public static function montarXml($nfe, $dados){

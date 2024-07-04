@@ -18,12 +18,12 @@ class RetencaoTransporte extends Model
     public $cMunFG;
 
     public function setarDados( $data){
-        $this->vServ        = $data->vServ ?? null;
-        $this->vBCRet       = $data->vBCRet ?? null;
-        $this->pICMSRet     = $data->pICMSRet ?? null;
-        $this->vICMSRet     = $data->vICMSRet ?? null;
-        $this->CFOP         = $data->CFOP ?? null;
-        $this->cMunFG       = $data->cMunFG ?? null;
+        $this->vServ        = $data['vServ '] ?? null;
+        $this->vBCRet       = $data['vBCRet '] ?? null;
+        $this->pICMSRet     = $data['pICMSRet '] ?? null;
+        $this->vICMSRet     = $data['vICMSRet '] ?? null;
+        $this->CFOP         = $data['CFOP '] ?? null;
+        $this->cMunFG       = $data['cMunFG '] ?? null;
     }
     public static function montarXml($nfe, $dados){
         $std                = new \stdClass();

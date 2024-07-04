@@ -35,27 +35,27 @@ class Destinatario extends Model
     public $email;
     public $idEstrangeiro;
     public function setarDados( $data){
-        $this->xNome      = $data->xNome ?? null;
-        $this->xFant      = $data->xFant ?? null;
-        $this->IE         = $data->IE ?? null;
-        $this->IM         = $data->IM ?? null;
-        $this->CNPJ       = $data->CNPJ ?? null;
-        $this->CPF        = $data->CPF ?? null;
-        $this->xLgr       = $data->xLgr ?? null;
-        $this->nro        = $data->nro ?? null;
-        $this->xCpl       = $data->xCpl ?? null;
-        $this->xBairro    = $data->xBairro ?? null;
-        $this->cMun       = $data->cMun ?? null;
-        $this->xMun       = $data->xMun ?? null;
-        $this->UF         = $data->UF ?? null;
-        $this->CEP        = $data->CEP ?? null;
-        $this->cPais      = $data->cPais ?? null;
-        $this->xPais      = $data->xPais ?? null;
-        $this->fone       = $data->fone ?? null;
-        $this->indIEDest  = $data->indIEDest ?? null;
-        $this->ISUF       = $data->ISUF ?? null;
-        $this->email      = $data->email ?? null;
-        $this->idEstrangeiro = $data->idEstrangeiro ?? null;
+        $this->xNome      = $data['xNome '] ?? null;
+        $this->xFant      = $data['xFant '] ?? null;
+        $this->IE         = $data['IE '] ?? null;
+        $this->IM         = $data['IM '] ?? null;
+        $this->CNPJ       = $data['CNPJ '] ?? null;
+        $this->CPF        = $data['CPF '] ?? null;
+        $this->xLgr       = $data['xLgr '] ?? null;
+        $this->nro        = $data['nro '] ?? null;
+        $this->xCpl       = $data['xCpl '] ?? null;
+        $this->xBairro    = $data['xBairro '] ?? null;
+        $this->cMun       = $data['cMun '] ?? null;
+        $this->xMun       = $data['xMun '] ?? null;
+        $this->UF         = $data['UF '] ?? null;
+        $this->CEP        = $data['CEP '] ?? null;
+        $this->cPais      = $data['cPais '] ?? null;
+        $this->xPais      = $data['xPais '] ?? null;
+        $this->fone       = $data['fone '] ?? null;
+        $this->indIEDest  = $data['indIEDest '] ?? null;
+        $this->ISUF       = $data['ISUF '] ?? null;
+        $this->email      = $data['email '] ?? null;
+        $this->idEstrangeiro = $data['idEstrangeiro '] ?? null;
     }
 
     public static function montarXml($nfe, $dados){

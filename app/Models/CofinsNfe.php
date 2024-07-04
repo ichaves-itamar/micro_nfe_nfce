@@ -19,13 +19,13 @@ class CofinsNfe extends Model
     public $tipo_calculo;
 
     public function setarDados( $data){
-        $this->CST              = $data->CST ?? null;
-        $this->vBC              = $data->vBC ?? null;
-        $this->pCOFINS          = $data->pCOFINS ?? null;
-        $this->vCOFINS          = $data->vCOFINS ?? null;
-        $this->qBCProd          = $data->qBCProd ?? null;
-        $this->vAliqProd        = $data->vAliqProd ?? null;
-        $this->tipo_calculo     = $data->tipo_calculo ?? null;
+        $this->CST              = $data['CST '] ?? null;
+        $this->vBC              = $data['vBC '] ?? null;
+        $this->pCOFINS          = $data['pCOFINS '] ?? null;
+        $this->vCOFINS          = $data['vCOFINS '] ?? null;
+        $this->qBCProd          = $data['qBCProd '] ?? null;
+        $this->vAliqProd        = $data['vAliqProd '] ?? null;
+        $this->tipo_calculo     = $data['tipo_calculo '] ?? null;
     }
 
     public static function montarXml($cont,$nfe, $dados){

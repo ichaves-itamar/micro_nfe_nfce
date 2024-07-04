@@ -17,10 +17,10 @@ class Fatura extends Model
 
 
     public function setarDados( $data){
-        $this->nFat         = $data->nFat ?? null;
-        $this->vOrig        = $data->vOrig ?? null;
-        $this->vDesc        = $data->vDesc ?? null;
-        $this->vLiq         = $data->vLiq ?? null;
+        $this->nFat         = $data['nFat '] ?? null;
+        $this->vOrig        = $data['vOrig '] ?? null;
+        $this->vDesc        = $data['vDesc '] ?? null;
+        $this->vLiq         = $data['vLiq '] ?? null;
     }
 
     public static function montarXml($nfe, $dados){

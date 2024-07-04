@@ -2,8 +2,10 @@
 
 namespace App\Service;
 
+use App\Models\Destinatario;
 use App\Models\Emitente;
 use App\Models\Ide;
+use App\Models\IdeNfe;
 use App\Models\Produto;
 use App\Models\Total;
 use stdClass;
@@ -12,7 +14,7 @@ Class ValidaDadosNfeService {
 
 public static function validaDadosNfe($dados)
 {
-   // i($dados);
+  // i($dados);
     $retorno = new \stdClass();
     $notafiscal = new \stdClass();
 
@@ -34,15 +36,15 @@ public static function validaDadosNfe($dados)
             throw new \Exception("É obrigatorio o node DESTINATARIO");
 
         }
-        if(!isset($dados->itens)){
+        if(!isset($dados["itens"])){
             $retorno->titulo =  "Erro ao ler objeto";
             throw new \Exception("É Obrigatório o envio do node Itens para emissão da NFE");
         }
 
-        if(!isset($dados->pagamentos)){
+        /*if(!isset($dados["pagamentos"])){
             $retorno->titulo =  "Erro ao ler objeto";
             throw new \Exception("É Obrigatório o envio do node pagamentos para emissão da NFE");
-        } 
+        } */
 
         //NODE ide
         $ide = self::validaIde($dados["ide"], $dados["emitente"], $dados["destinatario"]);
@@ -56,80 +58,32 @@ public static function validaDadosNfe($dados)
         $destinatario = self::validaDestinatario($dados["destinatario"]);
         $notafiscal->destinatario = $destinatario;
 
-        $produto = self::validaProduto($dados["itens"][0]["produto"]);
-        $notafiscal->produto = $produto;
-
-        $total      = new Total();
-             foreach($dados->itens as $item){    
-                $it = new stdClass;         
-                if(!isset($item->produto)){
-                    $retorno->titulo =  "Erro ao ler objeto";
-                    throw new \Exception("É Obrigatório o envio do node Produto   para emissão da NFE");
-                }
-
-                if(!isset($item->icms)){
-                    throw new \Exception('É obrigatório o envio do node icms para emissão da nota');
-                }
-
-                $item->icms->ipi =  0;
-                $ipi = null;
-                if(isset($item->ipi)){
-                    $ipi = ValidarImpostoService::validarIpi($item->ipi);
-                    if($ipi->vIPI){
-                        $item->icms->ipi =  $ipi->vIPI;
-                    }
-                }
-                if($ipi){
-                    $it->ipi     = $ipi;
-                }
-                
-                if(!isset($item->pis)){
-                    throw new \Exception('É obrigatório o envio do node pis para emissão da nota');
-                }
-                
-                if(!isset($item->cofins)){
-                    throw new \Exception('É obrigatório o envio do node cofins para emissão da nota');
-                }  
-                
-                $it = new stdClass;
-                $it->produto = self::validaProduto($item->produto);
-
-                $it->icms    = ValidarImpostoService::validarIcms($item->icms);
-                $it->pis     = ValidarImpostoService::validarPis($item->pis);
-                $it->cofins  = ValidarImpostoService::validarCofins($item->cofins);
-
-
-
-                
-                $vBC = $it->icms->vBC ;
-                $vICMS = $it->icms->vICMS ;
-                if($it->icms->CST=="102" || $it->icms->CST=="103" || $it->icms->CST=="300" || $it->icms->CST=="400"  ){
-                    $vBC = 0;
-                    $vICMS = 0;
-                }
-                 //Totais
-                 $total->vBC			  += $vBC ;
-                 $total->vICMS            += $vICMS ;
-                 $total->vICMSDeson       += $it->icms->vICMSDeson ;
-                 $total->vBCST            += $it->icms->vBCST ;
-                 $total->vProd            += $it->produto->vProd ;
-                 $total->vFrete           += $it->produto->vFrete ;
-                 $total->vSeg             += $it->produto->vSeg ;
-                 $total->vDesc            += $it->produto->vDesc ;
-                 $total->vII              +=  null ;
-                 $total->vIPI             += $it->ipi->vIPI ?? 0;
-                 $total->vPIS             += $it->pis->vPIS ;
-                 $total->vCOFINS          += $it->cofins->vCOFINS;
-                 $total->vOutro           += $it->produto->vOutro ;
-                 $total->vFCP             += $it->icms->vFCP ;
-                 $total->vFCPST           += $it->icms->vFCPST ;
-                 $total->vFCPSTRet        += $it->icms->vFCPSTRet ;
-                 $total->vNF              += $it->produto->vProd + $it->produto->vFrete + $it->produto->vSeg + $it->produto->vOutro + $it->produto->vOutro +
-                                                 $total->vIPI  +    $it->icms->vFCPST  - $it->produto->vDesc - $it->icms->vICMSDeson;
-                $notafiscal->itens[] = $it;
-
+        foreach($dados['itens'] as $itens){
+            if(!isset($itens["produto"])){
+                throw new \Exception("è obrigatorio o envio de por ao menos um produto para emissão de NFe");
             }
 
+            $ipi = null;
+            if(!isset($itens["ipi"])){
+                $ipi = ValidarImpostoService::validarIpi($itens["ipi"]);
+            }
+
+            if(!isset($itens["icms"])){
+                throw new \Exception('É obrigatório o envio do node icms para emissão da nota');
+            }
+
+            if(!isset($itens["pis"])){
+                throw new \Exception('É obrigatório o envio do node pis para emissão da nota');
+            }
+            
+            if(!isset($itens["cofins"])){
+                throw new \Exception('É obrigatório o envio do node cofins para emissão da nota');
+            } 
+            $it = new stdClass;
+            $it->produto = self::validaProduto($itens["produto"]);
+        }
+
+      
 
         $retorno->tem_erro = false;
         $retorno->tem_erro = "";
@@ -218,8 +172,8 @@ if($emitente->UF !="EX"){
     $dados->idDest = config("constanteNota.idDest.EXTERIOR");
 }
 
-$ide = new Ide();
-$ide->setarDados($dados);
+$ide = new IdeNfe();
+$ide->setarDados($array);
 return $ide;
 
 }
@@ -262,7 +216,7 @@ if(!isset($dados->CRT) ||  is_null($dados->CRT)) {
 }
 
 $emitente = new Emitente();
-$emitente->setarDados($dados);
+$emitente->setarDados($array);
 return $emitente;
 
 }
@@ -321,10 +275,15 @@ $cnpj  = tira_mascara($dados->CPF_CNPJ);
             $dados->CNPJ  = null;
         }
 
-      return $dados;
+        $destinatario = new Destinatario();
+        $destinatario->setarDados($array);
+        return $destinatario;
 }
 
-public static function validaProduto($dados){
+public static function validaProduto($array){
+
+    $dados = (object) $array;
+
     if(!isset($dados->cProd) ||  is_null($dados->cProd)) {
         throw new \Exception('O Campo cProd do node Produto é Obrigatório');
     }
@@ -365,7 +324,7 @@ public static function validaProduto($dados){
     }
 
     $produto = new Produto();
-    $produto->setarDados($dados);
+    $produto->setarDados($array);
     return $produto;
 }
 

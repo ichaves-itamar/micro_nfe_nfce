@@ -40,35 +40,35 @@ class Total extends Model
     public	$vICMSMonoRet;
 
     public function setarDados( $data){
-        $this->vBC				= $data->vBC ?? null ;
-        $this->vICMS            = $data->vICMS ?? null ;
-        $this->vICMSDeson       = $data->vICMSDeson ?? null ;
-        $this->vBCST            = $data->vBCST ?? null ;
-        $this->vST              = $data->vST ?? null ;
-        $this->vProd            = $data->vProd ?? null ;
-        $this->vFrete           = $data->vFrete ?? null ;
-        $this->vSeg             = $data->vSeg ?? null ;
-        $this->vDesc            = $data->vDesc ?? null ;
-        $this->vII              = $data->vII ?? null ;
-        $this->vIPI             = $data->vIPI ?? null ;
-        $this->vPIS             = $data->vPIS ?? null ;
-        $this->vCOFINS          = $data->vCOFINS ?? null ;
-        $this->vOutro           = $data->vOutro ?? null ;
-        $this->vNF              = $data->vNF ?? null ;
-        $this->vIPIDevol        = $data->vIPIDevol ?? null ;
-        $this->vTotTrib         = $data->vTotTrib ?? null ;
-        $this->vFCP             = $data->vFCP ?? null ;
-        $this->vFCPST           = $data->vFCPST ?? null ;
-        $this->vFCPSTRet        = $data->vFCPSTRet ?? null ;
-        $this->vFCPUFDest       = $data->vFCPUFDest ?? null ;
-        $this->vICMSUFDest      = $data->vICMSUFDest ?? null ;
-        $this->vICMSUFRemet     = $data->vICMSUFRemet ?? null ;
-        $this->qBCMono          = $data->qBCMono ?? null ;
-        $this->vICMSMono        = $data->vICMSMono ?? null ;
-        $this->qBCMonoReten     = $data->qBCMonoReten ?? null ;
-        $this->vICMSMonoReten   = $data->vICMSMonoReten ?? null ;
-        $this->qBCMonoRet       = $data->qBCMonoRet ?? null ;
-        $this->vICMSMonoRet     = $data->vICMSMonoRet ?? null ;
+        $this->vBC				= $data['vBC '] ?? null ;
+        $this->vICMS            = $data['vICMS '] ?? null ;
+        $this->vICMSDeson       = $data['vICMSDeson '] ?? null ;
+        $this->vBCST            = $data['vBCST '] ?? null ;
+        $this->vST              = $data['vST '] ?? null ;
+        $this->vProd            = $data['vProd '] ?? null ;
+        $this->vFrete           = $data['vFrete '] ?? null ;
+        $this->vSeg             = $data['vSeg '] ?? null ;
+        $this->vDesc            = $data['vDesc '] ?? null ;
+        $this->vII              = $data['vII '] ?? null ;
+        $this->vIPI             = $data['vIPI '] ?? null ;
+        $this->vPIS             = $data['vPIS '] ?? null ;
+        $this->vCOFINS          = $data['vCOFINS '] ?? null ;
+        $this->vOutro           = $data['vOutro '] ?? null ;
+        $this->vNF              = $data['vNF '] ?? null ;
+        $this->vIPIDevol        = $data['vIPIDevol '] ?? null ;
+        $this->vTotTrib         = $data['vTotTrib '] ?? null ;
+        $this->vFCP             = $data['vFCP '] ?? null ;
+        $this->vFCPST           = $data['vFCPST '] ?? null ;
+        $this->vFCPSTRet        = $data['vFCPSTRet '] ?? null ;
+        $this->vFCPUFDest       = $data['vFCPUFDest '] ?? null ;
+        $this->vICMSUFDest      = $data['vICMSUFDest '] ?? null ;
+        $this->vICMSUFRemet     = $data['vICMSUFRemet '] ?? null ;
+        $this->qBCMono          = $data['qBCMono '] ?? null ;
+        $this->vICMSMono        = $data['vICMSMono '] ?? null ;
+        $this->qBCMonoReten     = $data['qBCMonoReten '] ?? null ;
+        $this->vICMSMonoReten   = $data['vICMSMonoReten '] ?? null ;
+        $this->qBCMonoRet       = $data['qBCMonoRet '] ?? null ;
+        $this->vICMSMonoRet     = $data['vICMSMonoRet '] ?? null ;
     }
 
     public static function montarXml($nfe, $dados){

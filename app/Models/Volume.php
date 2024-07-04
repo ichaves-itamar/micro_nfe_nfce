@@ -20,13 +20,13 @@ class Volume extends Model
 
 
     public function setarDados( $data){
-        $this->qVol       = $data->qVol ?? null;
-        $this->esp        = $data->esp ?? null;
-        $this->marca      = $data->marca ?? null;
-        $this->nVol       = $data->nVol ?? null;
-        $this->pesoL      = $data->pesoL ?? null;
-        $this->pesoB      = $data->pesoB ?? null;
-        $this->nLacre     = $data->nLacre ?? null;
+        $this->qVol       = $data['qVol '] ?? null;
+        $this->esp        = $data['esp '] ?? null;
+        $this->marca      = $data['marca '] ?? null;
+        $this->nVol       = $data['nVol '] ?? null;
+        $this->pesoL      = $data['pesoL '] ?? null;
+        $this->pesoB      = $data['pesoB '] ?? null;
+        $this->nLacre     = $data['nLacre '] ?? null;
     }
 
     public static function montarXml($nfe, $dados){

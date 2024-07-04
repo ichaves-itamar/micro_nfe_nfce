@@ -14,10 +14,10 @@ class RespTecnico extends Model
     public $fone;
 
     public function setarDados( $data){
-        $this->CNPJ     = $data->CNPJ ?? null;
-        $this->xContato = $data->xContato ?? null;
-        $this->email    = $data->email ?? null;
-        $this->fone     = $data->fone ?? null;
+        $this->CNPJ     = $data['CNPJ '] ?? null;
+        $this->xContato = $data['xContato '] ?? null;
+        $this->email    = $data['email '] ?? null;
+        $this->fone     = $data['fone '] ?? null;
     }
 
     public static function montarXml($nfe, $infRespTec, $dadosCartao){
